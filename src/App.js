@@ -1,11 +1,16 @@
 import React from "react";
-import "./App.scss";
-import User from "./components/user";
+import Checklist from "./components/checklist";
+import Login from "./components/login";
+import Register from "./components/register";
 
 function App() {
   return (
     <div className="app">
-      <User />
+      <Login />
+      <hr />
+      <Register />
+      <hr />
+      <Checklist />
     </div>
   );
 }

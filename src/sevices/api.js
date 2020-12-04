@@ -1,8 +1,8 @@
-import { create } from 'apisauce'
+import { create } from "apisauce";
 
 const api = create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
-  timeout: 60000
-})
+  baseURL: "http://18.139.50.74:8080",
+  timeout: 60000,
+});
 
-export default api
+export default api;

@@ -1,7 +1,24 @@
-import { all, takeEvery } from "redux-saga/effects";
-import { GET_USER_REQUEST } from "../constants/user";
-import {getUserSaga} from './user'
+import { all, takeLatest } from "redux-saga/effects";
+import { LOGIN_REQUEST, REGISTRATION_REQUEST } from "../constants/auth";
+import {
+  CREATE_CHECKLIST_REQUEST,
+  DELETE_CHECKLIST_REQUEST,
+  GET_ALL_CHECKLIST_REQUEST,
+} from "../constants/checklist";
+import { authLoginSaga, authRegisterSaga } from "./auth";
+import {
+  createChecklistSaga,
+  deleteChecklistSaga,
+  getAllChecklistSaga,
+} from "./checklist";
 
 export default function* rootSaga() {
-  yield all([takeEvery(GET_USER_REQUEST, getUserSaga)]);
+  //auth
+  yield all([takeLatest(LOGIN_REQUEST, authLoginSaga)]);
+  yield all([takeLatest(REGISTRATION_REQUEST, authRegisterSaga)]);
+
+  //checklist
+  yield all([takeLatest(GET_ALL_CHECKLIST_REQUEST, getAllChecklistSaga)]);
+  yield all([takeLatest(CREATE_CHECKLIST_REQUEST, createChecklistSaga)]);
+  yield all([takeLatest(DELETE_CHECKLIST_REQUEST, deleteChecklistSaga)]);
 }
